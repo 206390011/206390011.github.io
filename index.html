@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Denny James | Dev Portfolio</title>
+  <link rel="stylesheet" href="styles/style.css">
+</head>
+
+<body>
+  <nav class="menu" tabindex="0">
+    <div class="smartphone-menu-trigger"></div>
+    <h1> Denny James </h1>
+    <p> Full stack software developer </p>
+    <img id="profileImg" src="images/denny.jpg" alt="">
+    <div class="links">
+      <div><a href="#about">About Me</a></div>
+      <div><a href="#experience">Experience</a></div>
+      <div><a href="#skills">Skills</a></div>
+      <div><a href="#works">Recent Works</a></div>
+      <div><a href="#contact">Get in Touch</a></div>
+    </div>
+    <div style="margin-bottom: 5%;">
+      <a href="https://github.com/dennyjames" target="_blank" class="fa fa-github"></a>
+      <a href="https://www.linkedin.com/in/dennyjames/" target="_blank" class="fa fa-linkedin"></a>
+      <a href="https://www.facebook.com/dennyjames.k" target="_blank" class="fa fa-facebook"></a>
+    
+    </div>
+  </nav>
+  <div class="mobhead">
+    <h1> Denny James </h1>
+    <p> Full stack software developer </p>
+  </div>
+
+  <div class="main">
+    <div class="card" id="about" data-aos="zoom-in">
+      <h4>About Me</h4>
+      <hr>
+      <p>I am a full stack software developer currently working at <a href="https://group.bnpparibas/en/"
+          target="_blank">BNP Paribas</a>, India.
+        I love to design and code products for the web. During my career of 5 years as a software developer, i developed
+        a
+        serious passion for solving problems, with great attention to detail.
+      </p>
+      <p>
+        The thing i love about my work - It is nearly impossible to deliver a perfect solution to a given problem.
+        There is always room for some iterative improvement.
+      </p>
+    </div>
+
+    <div class="card" id="experience" data-aos="zoom-in">
+      <h4>Experience</h4>
+      <hr>
+      <div class="exptitle">
+        <div>
+          <h5>BNP Paribas India Solutions</h5>
+          <h6>Software Engineer</h6>
+          <h6>2019 May - Present</h6>
+        </div>
+        <img class="logo" src="images/BNP_Paribas_logo.png" alt=""> 
+      </div>
+
+      <div>
+        <p>
+          Works for a product which manages local clearing and custody at the security services department.
+          I am responsible for developing changes in the product based on requests from different local markets.
+          Being a very sensitive application for the bank, quality is at the heart of everything i do here.
+        </p>
+        <p class="secondary"> Technology Stack : Java, Hibernate, PLSQL, Junit</p>
+      </div>
+      <hr>
+      <div class="exptitle">
+        <div>
+          <h5>Tata Consultancy Services</h5>
+          <h6>Full Stack Developer</h6>
+          <h6>2016 Jan - 2019 Apr</h6>
+        </div>
+        <img class="logo" src="images/tcs.jpg" alt=""> 
+      </div>
+
+      <div>
+        <p> Worked as a lead engineer for the product development
+          wing of the company. My work here involved requirement gathering, development and implementation and
+          all the way up to deployment
+          and support.
+        </p>
+        <p class="secondary"> Technology Stack : Java, Hibernate, Postgresql, ExtJS, NodeJS</p>
+      </div>
+    </div>
+    <div class="card" id="skills" data-aos="zoom-in">
+      <h4>Skills</h4>
+      <hr>
+      <ul>
+        <li> Java : Java 8, Hibernate, Struts 2</li>
+        <li> Javascript : ES6, NodeJS, ExtJS</li>
+        <li> Web development : HTML5, CSS3, Bootstrap, Jquery</li>
+        <li> Unit Testing : Junit</li>
+        <li> Database : Oracle, Postgresql, PLSQL</li>
+        <li> IDE : Eclipse, VS Code, Intellij IDEA</li>
+        <li> Version Control : SVN, Git</li>
+      </ul>
+      <p class="secondary"> Current Focus : React, MongoDB</p>
+    </div>
+    <div class="card" id="works" data-aos="zoom-in">
+      <h4>Recent Works</h4>
+      <hr>
+      <div style="text-align:center">
+        <a href="https://coronastatsindia.herokuapp.com/" target="_blank"><img style="max-width: 220px;"
+            src="images/covid-dashboard.png" alt="">
+          </a>
+      </div>
+      <p>A <a href="https://coronastatsindia.herokuapp.com/" target="_blank">single page web app</a> which displays
+        different dashboards on the current covid statistics of India. Built on HTML, CSS, Node & Postgresql.</p>
+    </div>
+    <div class="card" id="contact" data-aos="zoom-in">
+      <h4>Get in Touch</h4>
+      <hr>
+      <p> Want to say Hello?</p>
+      <p> Write to me @ <a href="mailto:dennyjames.k@gmail.com" target="_blank">dennyjames.k@gmail.com</a></p>
+      <p>Or</p>
+      <div class="sociallinks">
+        <a href="https://github.com/dennyjames" target="_blank" class="fa fa-github"></a>
+        <a href="https://www.linkedin.com/in/dennyjames/" target="_blank" class="fa fa-linkedin"></a>
+        <a href="https://www.facebook.com/dennyjames.k" target="_blank" class="fa fa-facebook"></a>
+      </div>
+    </div>
+
+  </div>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap" rel="stylesheet">
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+
+    let smartPhoneTrigger = document.getElementsByClassName('menu')[0];
+
+    var counter = 0;
+
+    smartPhoneTrigger.addEventListener('transitionstart', function()  {
+      counter++;
+      if (counter % 2 == 0) {
+
+        let isHidden = document.getElementsByClassName('mobhead')[0].style.display === 'none';
+        if (!isHidden)
+          document.getElementsByClassName('mobhead')[0].style.display = 'none';
+        else
+          document.getElementsByClassName('mobhead')[0].style.display = 'block';
+      }
+    });
+  </script>
+</body>
+
+</html>
