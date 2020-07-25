@@ -146,9 +146,9 @@ a {
     padding-left: 0;
   }
   .menu {
-    width: 230px;
+    width: 310px;
     box-shadow: 0 0 0 100em rgba(0, 0, 0, 0);
-    transform: translate3d(-240px, 0, 0);
+    transform: translate3d(-320px, 0, 0);
     transition: all 0.3s ease-in;
   }
   .menu .smartphone-menu-trigger {

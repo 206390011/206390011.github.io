@@ -34,12 +34,12 @@
   </div>
 
   <div class="main">
-    <div class="card" id="about" data-aos="zoom-in">
+    <div class="card" id="about">
       <h4>About Me</h4>
       <hr>
       <p>I am a full stack software developer currently working at <a href="https://group.bnpparibas/en/"
           target="_blank">BNP Paribas</a>, India.
-        I love to design and code products for the web. During my career of 5 years as a software developer, i developed
+        I love to design and code products for the web. During my career of 5 years as a software developer, I developed
         a
         serious passion for solving problems, with great attention to detail.
       </p>
@@ -49,7 +49,7 @@
       </p>
     </div>
 
-    <div class="card" id="experience" data-aos="zoom-in">
+    <div class="card" id="experience">
       <h4>Experience</h4>
       <hr>
       <div class="exptitle">
@@ -64,7 +64,7 @@
       <div>
         <p>
           Works for a product which manages local clearing and custody at the security services department.
-          I am responsible for developing changes in the product based on requests from different local markets.
+          Along with my team, I am responsible for developing changes in the product based on requests from different local markets.
           Being a very sensitive application for the bank, quality is at the heart of everything i do here.
         </p>
         <p class="secondary"> Technology Stack : Java, Hibernate, PLSQL, Junit</p>
@@ -88,7 +88,7 @@
         <p class="secondary"> Technology Stack : Java, Hibernate, Postgresql, ExtJS, NodeJS</p>
       </div>
     </div>
-    <div class="card" id="skills" data-aos="zoom-in">
+    <div class="card" id="skills">
       <h4>Skills</h4>
       <hr>
       <ul>
@@ -102,7 +102,7 @@
       </ul>
       <p class="secondary"> Current Focus : React, MongoDB</p>
     </div>
-    <div class="card" id="works" data-aos="zoom-in">
+    <div class="card" id="works">
       <h4>Recent Works</h4>
       <hr>
       <div style="text-align:center">
@@ -113,7 +113,7 @@
       <p>A <a href="https://coronastatsindia.herokuapp.com/" target="_blank">single page web app</a> which displays
         different dashboards on the current covid statistics of India. Built on HTML, CSS, Node & Postgresql.</p>
     </div>
-    <div class="card" id="contact" data-aos="zoom-in">
+    <div class="card" id="contact">
       <h4>Get in Touch</h4>
       <hr>
       <p> Want to say Hello?</p>
@@ -128,28 +128,87 @@
 
   </div>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap" rel="stylesheet">
-
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-    AOS.init();
+    (function(document, history, location) {
+  var HISTORY_SUPPORT = !!(history && history.pushState);
 
-    let smartPhoneTrigger = document.getElementsByClassName('menu')[0];
+  var anchorScrolls = {
+    ANCHOR_REGEX: /^#[^ ]+$/,
+    OFFSET_HEIGHT_PX: 140,
 
-    var counter = 0;
+    /**
+     * Establish events, and fix initial scroll position if a hash is provided.
+     */
+    init: function() {
+      this.scrollToCurrent();
+      window.addEventListener('hashchange', this.scrollToCurrent.bind(this));
+      document.body.addEventListener('click', this.delegateAnchors.bind(this));
+    },
 
-    smartPhoneTrigger.addEventListener('transitionstart', function()  {
-      counter++;
-      if (counter % 2 == 0) {
+    /**
+     * Return the offset amount to deduct from the normal scroll position.
+     * Modify as appropriate to allow for dynamic calculations
+     */
+    getFixedOffset: function() {
+      return this.OFFSET_HEIGHT_PX;
+    },
 
-        let isHidden = document.getElementsByClassName('mobhead')[0].style.display === 'none';
-        if (!isHidden)
-          document.getElementsByClassName('mobhead')[0].style.display = 'none';
-        else
-          document.getElementsByClassName('mobhead')[0].style.display = 'block';
+    /**
+     * If the provided href is an anchor which resolves to an element on the
+     * page, scroll to it.
+     * @param  {String} href
+     * @return {Boolean} - Was the href an anchor.
+     */
+    scrollIfAnchor: function(href, pushToHistory) {
+      var match, rect, anchorOffset;
+
+      if(!this.ANCHOR_REGEX.test(href)) {
+        return false;
       }
-    });
+
+      match = document.getElementById(href.slice(1));
+
+      if(match) {
+        rect = match.getBoundingClientRect();
+        anchorOffset = window.pageYOffset + rect.top - this.getFixedOffset();
+        window.scrollTo(window.pageXOffset, anchorOffset);
+
+        // Add the state to history as-per normal anchor links
+        if(HISTORY_SUPPORT && pushToHistory) {
+          history.pushState({}, document.title, location.pathname + href);
+        }
+      }
+
+      return !!match;
+    },
+
+    /**
+     * Attempt to scroll to the current location's hash.
+     */
+    scrollToCurrent: function() {
+      this.scrollIfAnchor(window.location.hash);
+    },
+
+    /**
+     * If the click event's target was an anchor, fix the scroll position.
+     */
+    delegateAnchors: function(e) {
+      var elem = e.target;
+
+      if(
+        elem.nodeName === 'A' &&
+        this.scrollIfAnchor(elem.getAttribute('href'), true)
+      ) {
+        e.preventDefault();
+      }
+    }
+  };
+
+  window.addEventListener(
+    'DOMContentLoaded', anchorScrolls.init.bind(anchorScrolls)
+  );
+})(window.document, window.history, window.location);
   </script>
 </body>
 
